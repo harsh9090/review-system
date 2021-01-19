@@ -9,16 +9,9 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 
 import { AppComponent } from './app.component';
-
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { IconsComponent } from './icons/icons.component';
-import { NotificationsComponent } from './notifications/notifications.component';
-
 import {
   AgmCoreModule
 } from '@agm/core';
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -41,6 +34,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { AdminLayoutComponent } from './layouts/admin-layout.component';
 
 @NgModule({
   imports: [
@@ -63,8 +57,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatExpansionModule,
     MatToolbarModule,
     MatMenuModule,
-    FormsModule,
-    ReactiveFormsModule,
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
@@ -78,9 +70,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatSnackBarModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    })
   ],
   declarations: [
     AppComponent,

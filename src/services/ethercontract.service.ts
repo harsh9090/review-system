@@ -10,6 +10,7 @@ let tokenAbi = require('../../build/contracts/MyContract.json')
 })
 export class EthercontractService {
   private web3Provider:null;
+  
   account:string;
   constructor() {
     window.eth_requestAccounts;
@@ -21,7 +22,7 @@ export class EthercontractService {
     window.web3 = new Web3(this.web3Provider);
   }
  async getReviewFile(productName:string){
-    window.ethereum.autoRefreshOnNetworkChange = false;
+  window.ethereum.autoRefreshOnNetworkChange = false;
     var promises =await new Promise((resolve, reject) => {
       let paymentContract = TruffleContract(tokenAbi);
       paymentContract.setProvider(this.web3Provider);

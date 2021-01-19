@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy, PopStateEvent } from '@angular/common';
 import 'rxjs/add/operator/filter';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { NavbarComponent } from '../components/navbar/navbar.component';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import PerfectScrollbar from 'perfect-scrollbar';
 import * as $ from "jquery";
+import { IpfsService } from 'services/ipfs.service';
 
 @Component({
   selector: 'app-admin-layout',
@@ -17,9 +18,11 @@ export class AdminLayoutComponent implements OnInit {
   private lastPoppedUrl: string;
   private yScrollStack: number[] = [];
 
-  constructor( public location: Location, private router: Router) {}
+  constructor( public location: Location, private router: Router,private ipfs:IpfsService) {}
 
   ngOnInit() {
+      this.ipfs.initialProduct().then(data=>{
+      })
       const isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
 
       if (isWindows && !document.getElementsByTagName('body')[0].classList.contains('sidebar-mini')) {

@@ -1,9 +1,11 @@
 
-import { AfterViewInit, Component, OnChanges, ViewChild, OnInit, AfterContentInit } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, OnInit} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { IpfsService } from '../../../services/ipfs.service';
+import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+import { IpfsService } from 'services/ipfs.service';
  
 
 @Component({
@@ -14,11 +16,11 @@ import { IpfsService } from '../../../services/ipfs.service';
 
 
 export class ProductsTableComponent implements AfterViewInit, OnInit {
-
+  subscribe:Subscription=new Subscription();
   @ViewChild('paginator', { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private ipfs:IpfsService) { }
+  constructor(private ipfs:IpfsService,private router:Router) { }
 
   dataSource = new MatTableDataSource();
   show = true;
@@ -27,24 +29,23 @@ data = [];
   displayedColumns: string[] =
   ['productImage','title', 'category', 'shortDescription','longDescription'];
 title;
+getRow(number){
+  this.router.navigate(['/view-product'],{queryParams:{number:number}})
+}
 ngOnInit(){
-   console.log('work')
-   this.ipfs.getProduct().then(res=>{
-        this.data =res;
-    })
-    setTimeout(()=>{
-      this.show = false;
-    },8000)
-  setTimeout(() => {
-    var res = this.data
-    console.log(res)
+  this.ipfs.initialProduct()
+  this.subscribe= this.ipfs.product.subscribe(dat=>{
+    var res = dat
     this.dataSource = new MatTableDataSource(res);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.dataLength = res.length;
-  }, 8000);
+  })
+  setTimeout(()=>{
+    this.show = false;
+  },5500);
   }
-  ngAfterViewInit(): void {
+  ngAfterViewInit(): void { 
     this.dataSource.paginator = this.paginator; // For pagination
     this.dataSource.sort = this.sort; // For sort
   }

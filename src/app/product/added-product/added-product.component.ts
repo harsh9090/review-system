@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {  ActivatedRoute } from '@angular/router';
-import { IpfsService } from '../../services/ipfs.service';
+import { IpfsService } from 'services/ipfs.service';
 
 @Component({
   selector: 'app-added-product',

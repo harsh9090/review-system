@@ -1,4 +1,5 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { IpfsService } from 'services/ipfs.service';
 
 
 @Component({
@@ -6,6 +7,8 @@ import { Component} from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-
+export class AppComponent implements OnInit {
+  constructor(private ipfs:IpfsService){}
+  ngOnInit(){
+  }
 }

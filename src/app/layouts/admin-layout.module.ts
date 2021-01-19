@@ -1,19 +1,13 @@
-import { IpfsService } from './../../../services/ipfs.service';
-import { EthercontractService } from './../../../services/ethercontract.service';
-import { ProductsTableComponent } from './../../show-all-products/products-table/products-table.component';
-import { ShowAllProductsComponent } from './../../show-all-products/show-all-products.component';
-import { AddedProductComponent } from './../../added-product/added-product.component';
-import { ImageCropDialogComponent } from './../../image-crop-dialog/image-crop-dialog.component';
-import { AddNewProductComponent } from './../../add-new-product/add-new-product.component';
+import { IpfsService } from '../../services/ipfs.service';
+import { EthercontractService } from './../../services/ethercontract.service';
+import { ProductsTableComponent } from '../layouts/show-all-products/products-table/products-table.component';
+import { ShowAllProductsComponent } from '../layouts/show-all-products/show-all-products.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
-import { DashboardComponent } from '../../dashboard/dashboard.component';
-import { UserProfileComponent } from '../../user-profile/user-profile.component';
-import { IconsComponent } from '../../icons/icons.component';
-import { NotificationsComponent } from '../../notifications/notifications.component';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatRippleModule} from '@angular/material/core';
@@ -38,6 +32,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { ViewProductComponent } from './view-product/view-product.component';
+import { ImageCropDialogComponent } from 'app/product/image-crop-dialog/image-crop-dialog.component';
+import { AddNewProductComponent } from 'app/product/add-new-product/add-new-product.component';
+import { AddedProductComponent } from 'app/product/added-product/added-product.component';
 
 
 @NgModule({
@@ -82,14 +80,12 @@ import { MatPaginatorModule } from '@angular/material/paginator';
   ],
   declarations: [
     DashboardComponent,
-    UserProfileComponent,
-    IconsComponent,
-    NotificationsComponent,
     AddNewProductComponent,
     ImageCropDialogComponent,
     AddedProductComponent,
     ShowAllProductsComponent,
-    ProductsTableComponent
+    ProductsTableComponent,
+    ViewProductComponent
   ],
   providers: [ EthercontractService, IpfsService ]
 })

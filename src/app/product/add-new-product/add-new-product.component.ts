@@ -8,8 +8,8 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { ImageCropDialogComponent } from '../image-crop-dialog/image-crop-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { IpfsService } from '../../services/ipfs.service';
 import { Router } from '@angular/router';
+import { IpfsService } from 'services/ipfs.service';
 
 @Component({
   selector: 'app-add-new-product',

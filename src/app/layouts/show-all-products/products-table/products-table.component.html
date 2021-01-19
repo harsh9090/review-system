@@ -18,15 +18,13 @@
 </div>
   
 
-<div *ngIf = "show " class="spinner">
+<div *ngIf = "show" class="spinner">
   
   <h2> <mat-spinner strokeWidth='5' diameter='100' stroke="#f44336"></mat-spinner>Loading... Please wait</h2>
 </div>
 <div  class="example-container mat-elevation-z8" *ngIf = "dataSource && !show">
 
   <mat-table [dataSource]="dataSource"  matSort >
-
-    <!-- ID Column -->
     <ng-container matColumnDef="productImage">
       <mat-header-cell *matHeaderCellDef> <b><font color=white>Image</font></b> </mat-header-cell>
       <mat-cell *matCellDef="let row" data-label="product image">
@@ -69,10 +67,12 @@
     </tr>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;" >
+    <mat-row *matRowDef="let row; columns: displayedColumns;let i=index" (click)="getRow(i)" >
     </mat-row>
   </mat-table>
+
 <font color=white>
+
   <mat-paginator #paginator
   [length]="dataSource?.data.length"
   [pageSize]="5" [pageSizeOptions]="[1, 5, 10, 25, 100]"></mat-paginator>

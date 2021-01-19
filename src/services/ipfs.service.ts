@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as IPFS from 'ipfs-mini' 
+import { Subject } from 'rxjs';
 import { EthercontractService } from './ethercontract.service';
 
 
@@ -8,22 +9,56 @@ import { EthercontractService } from './ethercontract.service';
 })
 export class IpfsService {
   constructor(private ethcontract:EthercontractService) { }
-  file='congratz!'
+  product = new Subject<[]>();
+  allProducts = [];
   result=''
   data=''
+  interval;
   ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001,protocol: 'https'});
   async UploadData(values:string,title:string) {
     await this.ipfs.add(values)
       .then(async result => {
         this.result=result;
        await this.ethcontract.addDetails(result,title).then(result=>{
-          console.log('success')
+         console.log(result)
+          this.initialProduct();
         }).catch(error=>{
           console.log(error)
         });
         return result;
       })
     return this.result;
+  }
+  async initialProduct(){
+    await this.getProduct().then((res:[])=>{
+      var time=0;
+      this.interval = setInterval(() => {
+        this.allProducts = res;
+       this.product.next(res);
+       time++;
+       if(time>=3){
+         clearInterval(this.interval);
+       }
+    }, 5000);
+    })
+  }
+  viewProductData(number){
+  return this.allProducts[number];
+  }
+
+  async getReview(prname){
+    var data = []
+    await this.ethcontract.getReviewFile(prname).then(file=>{
+      if(file[0]==""){
+        return null;
+      }
+      this.GetData(file[0]).then((data2)=>{
+       for(let i=0;i<data2.length;i++){
+         data.push(data2[i]);
+       }
+      });
+    });
+    return data;
   }
 
   async addReview(prname:any,values,rating:number) {
@@ -32,7 +67,6 @@ export class IpfsService {
     oneValue.push(values);
     var stringValue = JSON.stringify(oneValue);
     await this.ethcontract.getReviewFile(prname).then(file=>{
-      console.log(file[0])
       if(file[0]!= ""){
         this.GetData(file[0]).then(data=>{
           for(let i=0; i<data.length;i++)
@@ -80,6 +114,9 @@ export class IpfsService {
      
     }
     
+
+
+
   async getProduct() {
     var product=[]
       await  this.ethcontract.getProduct().then((result:any)=>{
