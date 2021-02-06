@@ -5,7 +5,8 @@ import { IpfsService } from 'services/ipfs.service';
 @Component({
   selector: 'app-view-product',
   templateUrl: './view-product.component.html',
-  styleUrls: ['./view-product.component.css']
+  styleUrls: ['./view-product.component.css'],
+  providers: [IpfsService]
 })
 export class ViewProductComponent implements OnInit {
 product;

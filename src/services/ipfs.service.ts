@@ -90,7 +90,6 @@ export class IpfsService {
             }).catch(error=>{
               return error;
             });
-            
           })
         }
         )

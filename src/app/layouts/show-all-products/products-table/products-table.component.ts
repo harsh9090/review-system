@@ -11,7 +11,8 @@ import { IpfsService } from 'services/ipfs.service';
 @Component({
   selector: 'app-products-table',
   templateUrl: './products-table.component.html',
-  styleUrls: ['./products-table.component.css']
+  styleUrls: ['./products-table.component.css'],
+  providers:[IpfsService]
 })
 
 
@@ -35,7 +36,6 @@ getRow(number){
   this.router.navigate(['/view-product'],{queryParams:{number:number,name:this.title.title}})
 }
 ngOnInit(){
-  this.ipfs.initialProduct()
   this.subscribe= this.ipfs.product.subscribe(dat=>{
     var res = dat
     this.dataSource = new MatTableDataSource(res);
