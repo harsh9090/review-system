@@ -24,13 +24,15 @@ export class ProductsTableComponent implements AfterViewInit, OnInit {
 
   dataSource = new MatTableDataSource();
   show = true;
-  dataLength = 0
-data = [];
+  dataLength = 0;
+
   displayedColumns: string[] =
   ['productImage','title', 'category', 'shortDescription','longDescription'];
 title;
 getRow(number){
-  this.router.navigate(['/view-product'],{queryParams:{number:number}})
+  this.title = this.dataSource.data[number]
+  console.log(this.title.title)
+  this.router.navigate(['/view-product'],{queryParams:{number:number,name:this.title.title}})
 }
 ngOnInit(){
   this.ipfs.initialProduct()

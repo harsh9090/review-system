@@ -1,6 +1,6 @@
-
-
-  
+.back{
+  background-color: white;
+}
   .preview {
     display: -webkit-box;
     display: -webkit-flex;

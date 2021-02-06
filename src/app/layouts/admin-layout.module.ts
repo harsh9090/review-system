@@ -36,7 +36,9 @@ import { ViewProductComponent } from './view-product/view-product.component';
 import { ImageCropDialogComponent } from 'app/product/image-crop-dialog/image-crop-dialog.component';
 import { AddNewProductComponent } from 'app/product/add-new-product/add-new-product.component';
 import { AddedProductComponent } from 'app/product/added-product/added-product.component';
-
+import { AddReviewComponent } from 'app/review/add-review/add-review.component';
+import { RatingComponent } from 'app/review/rating/rating.component';
+import { ReviewFileComponent } from 'app/review/review-file/review-file.component';
 
 @NgModule({
   imports: [
@@ -85,7 +87,10 @@ import { AddedProductComponent } from 'app/product/added-product/added-product.c
     AddedProductComponent,
     ShowAllProductsComponent,
     ProductsTableComponent,
-    ViewProductComponent
+    ViewProductComponent,
+    ReviewFileComponent,
+    AddReviewComponent,
+    RatingComponent
   ],
   providers: [ EthercontractService, IpfsService ]
 })

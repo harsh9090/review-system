@@ -106,8 +106,6 @@ async getAllreviews(){
     });
     return promises;
   }
-
-  
   async addReview(prname:any,rating,hash1,hash2) {
     await this.getAccountInfo().then((data2:any)=>{
       this.account = data2.fromAccount
@@ -119,7 +117,8 @@ async getAllreviews(){
       paymentContract.setProvider(this.web3Provider);
       paymentContract.deployed().then(function(instance) {
           return instance.addReview(prname,hash1,hash2,rating,{
-              from: acc
+              from: acc,
+              value:0
           })
         }).then(function(status) {
           if(status) {
@@ -151,7 +150,6 @@ async getAllreviews(){
           product.push(result);
           });
           if(product) {
-            
             return resolve(product);
           }
         }).catch(function(error){
@@ -161,5 +159,4 @@ async getAllreviews(){
     });
     return promises;
   }
- 
 }

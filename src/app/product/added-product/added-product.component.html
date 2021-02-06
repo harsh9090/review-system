@@ -3,16 +3,23 @@
   fxFlex
   fxLayout="column"
   fxLayoutAlign="space-around none">
-
   <h3>Place Details > <b>Add new Place</b></h3>
-  <div *ngIf = "load" class="spinner">
+  <div *ngIf = "load && !stop" class="spinner">
     <mat-spinner strokeWidth='2' diameter='110'></mat-spinner>
     <div>
-      <h3>Please wait... <br> Adding the Place...</h3>
+      <h3>Please wait...</h3>
+    </div>       
+  </div>
+  <div *ngIf = "stop" class="spinner">
+    <mat-spinner strokeWidth='2' diameter='110'></mat-spinner>
+    <div>
+     
+      <h3>Resources Not Available.... <br> Please Go to <a [routerLink]="['/dashboard']"> Home Page</a></h3>
     </div>       
   </div>
   <div fxLayoutAlign='center center' fxLayout='column' *ngIf='!load'>
-    <img src="assets/images/tick.svg" width="100px" alt="">
+    <img src="assets/tick.svg" width="100px" alt="">
+    
     <h2>Place added successfully</h2>
     <div class="details">
       <table border="1">
