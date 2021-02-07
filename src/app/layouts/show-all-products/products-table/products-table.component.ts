@@ -11,8 +11,7 @@ import { IpfsService } from 'services/ipfs.service';
 @Component({
   selector: 'app-products-table',
   templateUrl: './products-table.component.html',
-  styleUrls: ['./products-table.component.css'],
-  providers:[IpfsService]
+  styleUrls: ['./products-table.component.css']
 })
 
 
@@ -32,9 +31,9 @@ export class ProductsTableComponent implements AfterViewInit, OnInit {
 title;
 getRow(number){
   this.title = this.dataSource.data[number]
-  console.log(this.title.title)
   this.router.navigate(['/view-product'],{queryParams:{number:number,name:this.title.title}})
 }
+
 ngOnInit(){
   this.subscribe= this.ipfs.product.subscribe(dat=>{
     var res = dat
@@ -45,7 +44,7 @@ ngOnInit(){
   })
   setTimeout(()=>{
     this.show = false;
-  },5500);
+  },5500)
   }
   ngAfterViewInit(): void { 
     this.dataSource.paginator = this.paginator; // For pagination

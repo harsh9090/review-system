@@ -31,8 +31,7 @@ export class EthercontractService {
         }).then(function(data) {
             return resolve(data);
         }).catch(function(error){
-          console.log(error);
-          return reject("Error in transferEther service call");
+          return reject('ReviewFile');
         });
     });
     return promises;
@@ -45,7 +44,7 @@ export class EthercontractService {
             if(err === null) {
               return resolve({fromAccount: account});
             } else {
-              return reject("error!");
+              return reject('Account');
             }
           });
         }
@@ -73,8 +72,7 @@ async getAllreviews(){
           return resolve({status:true});
         }
       }).catch(function(error){
-        console.log(error);
-        return reject("Error in transferEther service call");
+        return reject('AllReview');
       });
   });
   return promises;
@@ -100,8 +98,8 @@ async getAllreviews(){
             return resolve({status:true});
           }
         }).catch(function(error){
-          console.log(error);
-          return reject("Error in transferEther service call");
+        
+          return reject('AddProduct');
         });
     });
     return promises;
@@ -125,12 +123,35 @@ async getAllreviews(){
             return resolve({status:true});
           }
         }).catch(function(error){
-          console.log(error);
-          return reject("Error in transferEther service call");
+          return reject('AddReview');
         });
     });
     return promises;
   }
+  // async getProductDetail(name:string){
+  //   var promises =await new Promise((resolve, reject) => {
+      
+  //     var acc=this.account
+  //     let paymentContract = TruffleContract(tokenAbi);
+     
+  //     paymentContract.setProvider(this.web3Provider);
+      
+  //     paymentContract.deployed().then(function(instance) {
+  //         return instance.getProductHash();
+  //       }).then(function(status) {
+  //         if(status) {
+  //           return resolve({status:true});
+  //         }
+  //       }).catch(function(error){
+  //         return reject('ProductDetail');
+  //       });
+  //   });
+  //   return promises;
+  
+  // }
+
+
+
   async getProduct() {
     window.ethereum.autoRefreshOnNetworkChange = false;
     var promises =await new Promise((resolve, reject) => {
@@ -153,8 +174,7 @@ async getAllreviews(){
             return resolve(product);
           }
         }).catch(function(error){
-          console.log(error);
-          return reject("Error in transferEther service call");
+          return reject('AllProduct');
         });
     });
     return promises;

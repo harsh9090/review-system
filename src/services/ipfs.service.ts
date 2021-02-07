@@ -10,6 +10,7 @@ import { EthercontractService } from './ethercontract.service';
 export class IpfsService {
   constructor(private ethcontract:EthercontractService) { }
   product = new Subject<[]>();
+  productDetail = new Subject<[]>();
   allProducts = [];
   result=''
   data=''
@@ -33,24 +34,25 @@ export class IpfsService {
   }
   async initialProduct(){
     await this.getProduct().then((res:[])=>{
-      var time=0;
+            var time=0;
       this.interval = setInterval(() => {
-        this.allProducts = res;
        this.product.next(res);
+       this.allProducts = res;
        time++;
        if(time>=3){
-         clearInterval(this.interval);
+        clearInterval(this.interval)
        }
-    }, 5000);
+    }, 4000);
     })
   }
 
    addedone(){
     return this.addedProd;
   }
+  // async getdetails(name){}
 
   viewProductData(number){
-  return this.allProducts[number];
+       return this.allProducts[number];
   }
 
   async getReview(prname){
@@ -75,7 +77,6 @@ export class IpfsService {
     var stringValue = JSON.stringify(oneValue);
     await this.ethcontract.getReviewFile(prname).then(file=>{
       if(file[0]!= ""){
-        console.log("old")
         this.GetData(file[0]).then(data=>{
           for(let i=0; i<data.length;i++)
           allData.push(data[i]);
@@ -98,7 +99,6 @@ export class IpfsService {
           })
         }
         else{
-          console.log("new")
           this.ipfs.add(stringValue)
           .then(hash1 => {
             this.ipfs.add(stringValue)

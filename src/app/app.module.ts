@@ -7,7 +7,8 @@ import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
-
+import { EthercontractService } from './../services/ethercontract.service'
+import { IpfsService } from './../services/ipfs.service'
 import { AppComponent } from './app.component';
 import {
   AgmCoreModule
@@ -76,7 +77,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout.component';
     AdminLayoutComponent,
 
   ],
-  providers: [],
+  providers: [ EthercontractService, IpfsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

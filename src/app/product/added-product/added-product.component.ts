@@ -19,7 +19,6 @@ export class AddedProductComponent implements OnInit {
   }
   else{
     this.stop = true;
-    console.log(this.stop)
   }
 }
 }

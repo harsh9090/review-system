@@ -92,7 +92,7 @@ import { ReviewFileComponent } from 'app/review/review-file/review-file.componen
     AddReviewComponent,
     RatingComponent
   ],
-  providers: [ EthercontractService, IpfsService ]
+  providers: [ ]
 })
 
 export class AdminLayoutModule {}

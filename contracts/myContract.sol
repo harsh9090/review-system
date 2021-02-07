@@ -37,7 +37,11 @@ contract MyContract{
     
     function change_ipfs_length(uint8 _length) public {
         ipfs_length=_length;
-    } 
+    }
+    
+    function getProductHash(uint index) public view returns(string){
+        return product_hash[products[index]];
+    }
     
     function getBalance() public view returns(uint){
         return address(this).balance;

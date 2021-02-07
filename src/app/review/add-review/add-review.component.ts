@@ -117,7 +117,6 @@ this.ipfs.getProduct()
     var data = JSON.stringify(this.formData)
     await this.ipfs.addReview(this.title,data,this.rating).then(data=>{
       var values = data;
-      console.log(values)
     });
 }
   uploadMainImage() {
