@@ -8,9 +8,10 @@ import { Error404Component } from 'app/error404/error404.component';
 export class ErrorServService {
   constructor(public dialog: MatDialog) {}
 
-  openDialog() {
+  openDialog(data:string) {
     const dialogRef = this.dialog.open(Error404Component,{
-      data:{name:'there is error'}
+      data:{name:data}, height: '150px',
+      width: '370px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
