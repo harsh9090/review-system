@@ -1,6 +1,4 @@
-.back{
-  background-color: white;
-}
+
   .preview {
     display: -webkit-box;
     display: -webkit-flex;
@@ -11,9 +9,7 @@
     -webkit-flex-direction: column;
         -ms-flex-direction: column;
             flex-direction: column; }
-    @media screen and (max-width: 996px) {
-      .preview {
-        margin-bottom: 20px; } }
+  
   
   .preview-pic {
     -webkit-box-flex: 1;
@@ -22,12 +18,18 @@
             flex-grow: 1; }
   
   .preview-thumbnail.nav-tabs {
+    
     border: none;
     margin-top: 15px; }
     .preview-thumbnail.nav-tabs li {
+      
       width: 18%;
       margin-right: 2.5%; }
       .preview-thumbnail.nav-tabs li img {
+        align-content: center;
+    align-items: center;
+    align-self: center;
+    text-align: center;
         max-width: 100%;
         display: block; }
       .preview-thumbnail.nav-tabs li a {
@@ -49,29 +51,6 @@
     padding: 3em;
     line-height: 1.5em; }
   
-  @media screen and (min-width: 997px) {
-    .wrapper {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex; } }
-  
-  .details {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column; }
-  
-  .colors {
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-        -ms-flex-positive: 1;
-            flex-grow: 1; }
   
   .product-title, .price, .sizes, .colors {
     text-transform: UPPERCASE;
@@ -98,18 +77,7 @@
     height: 2em;
     width: 2em;
     border-radius: 2px; }
-    .color:first-of-type {
-      margin-left: 20px; }
-  
-  .orange {
-    background: #ff9f1a; }
-  
-  .green {
-    background: #85ad00; }
-  
-  .blue {
-    background: #0076ad; }
-  
+   
   .tooltip-inner {
     padding: 1.3em; }
   

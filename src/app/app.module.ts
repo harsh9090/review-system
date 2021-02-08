@@ -36,6 +36,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { AdminLayoutComponent } from './layouts/admin-layout.component';
+import { Error404Component } from './error404/error404.component';
 
 @NgModule({
   imports: [
@@ -75,6 +76,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout.component';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    Error404Component,
 
   ],
   providers: [ EthercontractService, IpfsService],

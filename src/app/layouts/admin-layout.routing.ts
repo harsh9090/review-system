@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { Error404Component } from 'app/error404/error404.component';
 import { AddNewProductComponent } from 'app/product/add-new-product/add-new-product.component';
 import { AddedProductComponent } from 'app/product/added-product/added-product.component';
 import { AddReviewComponent } from 'app/review/add-review/add-review.component';
@@ -13,5 +14,6 @@ export const AdminLayoutRoutes: Routes = [
     {path: 'added-product',component:AddedProductComponent},
     {path:'view-product',component:ViewProductComponent},
     {path:'view-review',component:ReviewFileComponent},
-    {path:'add-review',component:AddReviewComponent}
+    {path:'add-review',component:AddReviewComponent},
+    {path:'error',component:Error404Component}
 ];
